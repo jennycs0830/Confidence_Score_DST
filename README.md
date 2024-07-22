@@ -45,5 +45,35 @@ cd Confidence_Score_DST
 python create_faiss_db.py --output_faiss_db multiwoz-context-db.vec
 ```
 
-3. 
-
+3. Methods
+To run the different methods, use the following commands:
+- No Self-probing
+```bash
+python run.py
+```
+- Turn-level Self-probing
+```bash
+python run_selfprob_turn.py
+```
+- Slot-level Self-probing
+```bash
+python run_selfprob_slot.py
+```
+=======================================================
+### Arguments
+The scripts accept various arguments to customize the execution. Here are the detalis:
+- `--database` (str): Path to the database file. Default is `"multiwoz_database"`.
+- `--faiss` (str): Path to the FAISS index file. Default is `"multiwoz-context-db.vec"`.
+- `--ontology` (str): Path to the ontology file. Default is `"ontology.json"`.
+- `--context_size` (int): Size of the dialogue context to consider. Default is `2`.
+- `--num_examples` (int): Number of examples to use for few-shot learning. Default is `3`.
+- `--dials_total` (int): Total number of dialogues to process. Default is `100`.
+- `--prompt` (str): Type of prompt to use. Options are `"vanilla"`, `"topk"`, and `"multistep"`. Default is `"vanilla"`.
+- `--few_shot` (int): Whether to use few-shot learning. `1` to enable, `0` to disable. Default is `0`.
+- `--temperature` (float): Temperature for scaling the logits. Default is `0.7`.
+- `--model_name` (str): Name of the model to use. Default is `"meta-llama/Meta-Llama-3-8B-Instruct"`.
+- `--split` (str): Dataset split to use. Options are `"train"`, `"validation"`, and `"test"`. Default is `"validation"`.
+- `--result` (str): Path to save the results. Default is `"results"`.
+- `--plot_result` (str): Path to save plot results. Default is `"plot_results_gpt4"`.
+- `--verbalized` (int): Whether to use verbalized confidences. `1` to enable, `0` to disable. Default is `0`.
+- `--start_idx` (int): Starting index for processing dialogues. Default is `0`.
