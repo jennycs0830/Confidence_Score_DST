@@ -6,5 +6,5 @@ wandb/
 multiwoz-context-db.vec
 llama3.1/
 mistral7B/
-.out
-.csv
+*.out
+*.csv
