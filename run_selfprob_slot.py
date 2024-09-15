@@ -82,7 +82,7 @@ if __name__ == "__main__":
         
     # wandb
     os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
-    wandb.init(project="prompting-strategies-confidence-selfprob-slot", entity="jennysun-cs09", config=config, settings=wandb.Settings(start_method="fork"), name=input_file_name)
+    wandb.init(project="YOUR PROJECT NAME", entity="YOUR ENTITY", config=config, settings=wandb.Settings(start_method="fork"), name=input_file_name)
     report_table = wandb.Table(columns=['id', 'gt_domain', 'turn_state', 'total_state', 'pair_verbalized', 'slot_confidence', 'value_confidence', 'pair_confidence', 'pair_minicons'])
 
 
