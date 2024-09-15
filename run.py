@@ -81,9 +81,9 @@ if __name__ == "__main__":
     
     # wandb
     os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
-    os.environ["AZURE_OPENAI_KEY"] = "43a2ffaecb4b4c488c992d228f2a40a3"
+    os.environ["AZURE_OPENAI_KEY"] = "YOUR OPENAI KEY"
 
-    wandb.init(project="prompting-strategies-confidecne", entity="jennysun-cs09", config=config, settings=wandb.Settings(start_method="fork"), name=input_file_name)
+    wandb.init(project="PROJECT NAME", entity="ENTITY", config=config, settings=wandb.Settings(start_method="fork"), name=input_file_name)
     # report_table = wandb.Table(columns=['id', 'context', 'gt_domain', 'turn_state', 'total_state', 'slot_confidence', 'value_confidence', 'pair_confidence'])
     report_table = wandb.Table(columns=['id', 'gt_domain', 'turn_state', 'total_state', 'pair_verbalized', 'slot_confidence', 'value_confidence', 'pair_confidence', 'pair_minicons'])
 

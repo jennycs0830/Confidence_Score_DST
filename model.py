@@ -16,8 +16,8 @@ import re
 import os
 from openai import AzureOpenAI
 
-os.environ['HF_TOKEN'] = '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'
-os.environ["AZURE_OPENAI_KEY"] = "43a2ffaecb4b4c488c992d228f2a40a3"
+os.environ['HF_TOKEN'] = 'YOUR HF TOKEN'
+os.environ["AZURE_OPENAI_KEY"] = "YOUR OPENAI KEY"
 
 def get_model(model_id, is_8bit = True):
     if is_8bit:
@@ -34,7 +34,7 @@ def get_model(model_id, is_8bit = True):
             bnb_4bit_quant_type="nf4",
             bnb_4bit_compute_dtype=torch.bfloat16
         )
-    if model_id in ["UIUC-ConvAI-Sweden-GPT4", "gpt-35-turbo"]:
+    if model_id in ["gpt-35-turbo"]:
         return None
     else:
         model = AutoModelForCausalLM.from_pretrained(
@@ -46,7 +46,7 @@ def get_model(model_id, is_8bit = True):
     return model
 
 def get_tokenizer(model_id, stop_tokens=True):
-    if model_id == "UIUC-ConvAI-Sweden-GPT4":
+    if model_id == "OPENAI MODEL NAME":
         return None
     tokenizer = AutoTokenizer.from_pretrained(model_id, cache_dir = "cache")
     tokenizer.eos_token = "```"
@@ -68,12 +68,12 @@ def response(model, model_id, streamer, model_inputs, temperature, device="cuda"
     model_inputs = model_inputs.to(next(model.parameters()).device)
     if model_id == "UIUC-ConvAI-Sweden-GPT4":
         client = AzureOpenAI(
-            azure_endpoint = "https://uiuc-convai-sweden.openai.azure.com/", 
+            azure_endpoint = "YOUR AZURE ENDPOINT", 
             api_key=os.getenv("AZURE_OPENAI_KEY"),  
-            api_version="2024-02-15-preview"
+            api_version="YOUR API VERSION"
             )
         completion = client.chat.completions.create(
-                        model="UIUC-ConvAI-Sweden-GPT4", # model = "deployment_name"
+                        model="YOUR MODEL NAME", # model = "deployment_name"
                         messages = [{"role": "user", "content": model_inputs}],
                         temperature=temperature,
                         max_tokens=200,
